@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Homework 2 - Question 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assignments.hw2.q2.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="icon" href="data:,">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./assignments.hw2.q1.html"><span class="chapter-title">Question 1</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Homework 2</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Jaryt Salvo</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments.hw2.q1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Question 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments.hw2.q2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Question 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments.hw2.q3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Question 3</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#analysis-of-results" id="toc-analysis-of-results" class="nav-link active" data-scroll-target="#analysis-of-results">Analysis of Results:</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Question 1</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<style></style>
+<style>.printedClojure .sourceCode {
+  background-color: transparent;
+  border-style: none;
+}
+</style>
+<style>.clay-limit-image-width .clay-image {max-width: 100%}
+.clay-side-by-side .sourceCode {margin: 0}
+.clay-side-by-side {margin: 1em 0}
+</style>
+<script src="assignments.hw2.q1_files/md-default3.js" type="text/javascript"></script>
+<script src="assignments.hw2.q1_files/md-default4.js" type="text/javascript"></script>
+<script src="assignments.hw2.q1_files/vega5.js" type="text/javascript"></script>
+<script src="assignments.hw2.q1_files/vega6.js" type="text/javascript"></script>
+<script src="assignments.hw2.q1_files/vega7.js" type="text/javascript"></script>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb1"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">ns</span> assignments.hw2.q1</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  (<span class="at">:require</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   [my-py-clj.config <span class="at">:refer</span> <span class="at">:all</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   [assignments.hw2.utils <span class="at">:refer</span> <span class="at">:all</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   [fastmath.stats <span class="at">:as</span> stats]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">;;  [libpython-clj2.python :refer [py.-]]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">;;  [scicloj.sklearn-clj.metamorph :as sklearn-mm]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   [scicloj.hanamicloth.v1.api <span class="at">:as</span> haclo]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   [scicloj.metamorph.core <span class="at">:as</span> morph]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   [scicloj.metamorph.ml <span class="at">:as</span> mm]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>   [scicloj.metamorph.ml.classification <span class="at">:as</span> mlc]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>   [scicloj.metamorph.ml.gridsearch <span class="at">:as</span> grid]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>   [scicloj.metamorph.ml.loss <span class="at">:as</span> loss]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>   [scicloj.sklearn-clj <span class="at">:as</span> sklearn-clj]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>   [scicloj.sklearn-clj.ml]                                <span class="co">;; registers all models</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   [tablecloth.api <span class="at">:as</span> tc]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>   [tech.v3.dataset.metamorph <span class="at">:as</span> dsm]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>   [tech.v3.dataset.modelling <span class="at">:as</span> ds-mod]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<section id="q1-classification-with-nearest-neighbor-30-points" class="level4">
+<h4 class="anchored" data-anchor-id="q1-classification-with-nearest-neighbor-30-points"><em>Q1: Classification with Nearest Neighbor (30 Points)</em></h4>
+<p>For this question, you will need to perform KNN on the famous Iris data set. You are required to use Scki-learn to completion this question. The data is stored in a csv file and it can be downloaded from Canvas. For the description of the data set, you can visit: <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Wikipedia iris dataset</a>.</p>
+<p><strong><em>1) Load the data and split it into train, valid, and test (70/20/10).</em></strong></p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb2"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defonce</span><span class="fu"> iris </span>(<span class="kw">-&gt;</span> <span class="st">"data/A1Q1_Data.csv"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                  (tc/dataset {<span class="at">:key-fn</span> (<span class="kw">fn</span> [colname]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                         (<span class="kw">-&gt;</span> colname    <span class="co">;kabab-case keyword</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                             (clojure.string/replace <span class="ss">#"\.|\s"</span> <span class="st">"-"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                             clojure.string/lower-case</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                             <span class="kw">keyword</span>))})</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                  (ds-mod/set-inference-target <span class="at">:variety</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb3"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> response </span><span class="at">:variety</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb4"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> regressors</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  (tc/column-names iris (<span class="kw">complement</span> #{response})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb5"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [data (<span class="kw">-&gt;</span> iris</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>               (tc/split-&gt;seq <span class="at">:holdout</span> {<span class="at">:seed</span> <span class="dv">123</span> <span class="at">:ratio</span> <span class="fl">0.9</span>}))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      test-data (<span class="kw">-&gt;</span> data <span class="kw">first</span> <span class="at">:test</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      train-val-data (<span class="kw">-&gt;</span> data <span class="kw">first</span> <span class="at">:train</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                         (tc/split-&gt;seq <span class="at">:holdout</span> {<span class="at">:seed</span> <span class="dv">123</span>}))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      train-data (<span class="kw">-&gt;</span> train-val-data <span class="kw">first</span> <span class="at">:train</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      val-data (<span class="kw">-&gt;</span> train-val-data <span class="kw">first</span> <span class="at">:test</span>)]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  (<span class="bu">def</span><span class="fu"> test-data </span>test-data)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  (<span class="bu">def</span><span class="fu"> train-data </span>train-data)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  (<span class="bu">def</span><span class="fu"> val-data </span>val-data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb6"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">#'assignments.hw2.q1/val-data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>tc/split-&gt;seq</code> is a function that splits a dataset into two or more subsets. In this case, it’s dividing the dataset into a test set and a training set. The <code>:holdout</code> option specifies that we want to split the dataset into two subsets, while the <code>:ratio</code> option determines the proportion of the dataset to include in the training set.</p>
+<p>With this 90/10 split, we can further divide the training set into training and validation sets to tune our hyperparameters. The test set is already accessible in the data variable by calling <code>first</code>, which indicates the first element (map) of the sequence. The <code>:test</code> key in this map represents the 10% of the data set aside for testing, as specified in the <code>tc/split-&gt;seq</code> function call.</p>
+<p><strong><em>2) Write a function that uses the elbow method to select the value for K. You can set the range for K as (1, 15).</em></strong></p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb7"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> create-pipeline </span>[params]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  (morph/pipeline</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   (dsm/categorical-&gt;number [response])</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>   (dsm/set-inference-target response)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:metamorph/id</span> <span class="at">:model</span>}</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   (mm/model (<span class="kw">merge</span> {<span class="at">:model-type</span> <span class="at">:sklearn.classification/k-neighbors-classifier</span>}</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                    params))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function creates a pipeline for the KNN model, converting categorical data to numbers, setting the inference target, and creating the model with given parameters.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb8"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> generate-hyperparams </span>[]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  (grid/sobol-gridsearch</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:n-neighbors</span> (grid/linear <span class="dv">1</span> <span class="dv">15</span> <span class="dv">15</span> <span class="at">:int32</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">:weights</span>     (grid/categorical [<span class="st">"distance"</span>])</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">:metric</span>      (grid/categorical [<span class="st">"euclidean"</span> <span class="st">"manhattan"</span> <span class="st">"cosine"</span>])}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function generates hyperparameters for the KNN model using Sobol sequence for efficient space exploration, including neighbors (1-15), weights, and distance metrics.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb9"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(grid/sobol-gridsearch</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:n-neighbors</span> (grid/linear <span class="dv">1</span> <span class="dv">2</span> <span class="dv">2</span> <span class="at">:int32</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">:metric</span>      (grid/categorical [<span class="st">"euclidean"</span> <span class="st">"manhattan"</span>])})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb10"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>({<span class="at">:n-neighbors</span> <span class="dv">2</span>, <span class="at">:metric</span> <span class="st">"manhattan"</span>}</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> {<span class="at">:n-neighbors</span> <span class="dv">2</span>, <span class="at">:metric</span> <span class="st">"euclidean"</span>}</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> {<span class="at">:n-neighbors</span> <span class="dv">1</span>, <span class="at">:metric</span> <span class="st">"manhattan"</span>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> {<span class="at">:n-neighbors</span> <span class="dv">1</span>, <span class="at">:metric</span> <span class="st">"euclidean"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb11"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> evaluate-model </span>[pipelines data-seq]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  (mm/evaluate-pipelines</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   pipelines</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   data-seq</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   stats/cohens-kappa</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">:accuracy</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>   {<span class="at">:other-metrices</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    [{<span class="at">:name</span> <span class="at">:mathews-cor-coef</span> <span class="at">:metric-fn</span> stats/mcc}</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>     {<span class="at">:name</span> <span class="at">:accuracy</span> <span class="at">:metric-fn</span> loss/classification-accuracy}]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">:return-best-pipeline-only</span>        <span class="va">false</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">:return-best-crossvalidation-only</span> <span class="va">true</span>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function evaluates the model pipelines using various metrics like Cohen’s kappa, Matthews correlation coefficient, and accuracy.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb12"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> process-results </span>[evaluations]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;&gt;</span> evaluations</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>       flatten</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>       (<span class="kw">map</span> #(<span class="kw">hash-map</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">:summary</span> (mm/thaw-model (<span class="kw">get-in</span> <span class="va">%</span> [<span class="at">:fit-ctx</span> <span class="at">:model</span>]))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">:fit-ctx</span> (<span class="at">:fit-ctx</span> <span class="va">%</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">:timing-fit</span> (<span class="at">:timing-fit</span> <span class="va">%</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">:metric</span> ((<span class="kw">comp</span> <span class="at">:metric</span> <span class="at">:test-transform</span>) <span class="va">%</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">:other-metrices</span> ((<span class="kw">comp</span> <span class="at">:other-metrices</span> <span class="at">:test-transform</span>) <span class="va">%</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">:params</span> ((<span class="kw">comp</span> <span class="at">:options</span> <span class="at">:model</span> <span class="at">:fit-ctx</span>) <span class="va">%</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">:lookup-table</span> (<span class="kw">get-in</span> <span class="va">%</span> [<span class="at">:fit-ctx</span> <span class="at">:model</span> <span class="at">:target-categorical-maps</span> <span class="at">:variety</span> <span class="at">:lookup-table</span>])</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">:pipe-fn</span> (<span class="at">:pipe-fn</span> <span class="va">%</span>)))</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>       (<span class="kw">sort-by</span> <span class="at">:metric</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>       <span class="kw">reverse</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function processes the evaluation results, extracting relevant information and sorting the results by metric score in descending order.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb13"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> elbow-method </span>[train-data val-data]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [pipelines (<span class="kw">map</span> create-pipeline (generate-hyperparams))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        evaluations (evaluate-model pipelines [{<span class="at">:train</span> train-data <span class="at">:test</span> val-data}])]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    (process-results evaluations)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function implements the elbow method by creating pipelines with different hyperparameters, evaluating them, and processing the results to find the optimal K value.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb14"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> elbow-results</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  (elbow-method train-data val-data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This line applies the elbow method to the training and validation data, storing the results as <code>elbow-results</code>.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb15"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">count</span> elbow-results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb16"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">45</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb17"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> results-dataset</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;&gt;</span> elbow-results</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>       (<span class="kw">map</span> (<span class="kw">fn</span> [result]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>              (<span class="kw">let</span> [k (<span class="kw">get-in</span> result [<span class="at">:params</span> <span class="at">:n-neighbors</span>])</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                    dist-metric (<span class="kw">get-in</span> result [<span class="at">:params</span> <span class="at">:metric</span>])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                    kappa (<span class="at">:metric</span> result)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                    other-metrics (<span class="at">:other-metrices</span> result)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                    mcc (<span class="kw">-&gt;</span> (<span class="kw">filter</span> #(<span class="kw">=</span> (<span class="at">:name</span> <span class="va">%</span>) <span class="at">:mathews-cor-coef</span>) other-metrics)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                            <span class="kw">first</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                            <span class="at">:metric</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                    accuracy (<span class="kw">-&gt;</span> (<span class="kw">filter</span> #(<span class="kw">=</span> (<span class="at">:name</span> <span class="va">%</span>) <span class="at">:accuracy</span>) other-metrics)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                                 <span class="kw">first</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">:metric</span>)]</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>                {<span class="at">:k</span>        k</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:metric</span>   dist-metric</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:kappa</span>    kappa</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:mcc</span>      mcc</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>                 <span class="at">:accuracy</span> accuracy})))</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>       (tc/dataset)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code processes the elbow results, extracting key metrics (k, distance metric, kappa, MCC, accuracy) and creates a dataset for easier analysis and visualization.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb18"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [data (tc/select-rows results-dataset (<span class="kw">comp</span> #(<span class="kw">=</span> <span class="va">%</span> <span class="st">"euclidean"</span>) <span class="at">:metric</span>))]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> data</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>      (haclo/layer-line {:=x <span class="at">:k</span> :=y <span class="at">:kappa</span>})</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>      (haclo/layer-point {:=x         <span class="at">:k</span> :=y <span class="at">:kappa</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                          :=mark-size <span class="dv">50</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"x":{"field":"x","type":"nominal"},"y":{"field":"y","type":"nominal"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"width":400,"background":"floralwhite","layer":[{"mark":{"type":"line","tooltip":true},"encoding":{"x":{"field":"k","type":"quantitative"},"y":{"field":"kappa","type":"quantitative"}},"data":{"values":"k,metric,kappa,mcc,accuracy\n13,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n7,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n9,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n4,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n10,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n5,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n15,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n3,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n6,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n11,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n12,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n14,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n2,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n1,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n8,euclidean,0.9333333333333332,0.9361080170496191,0.9555555555555556\n","format":{"type":"csv"}}},{"mark":{"type":"circle","size":50,"tooltip":true},"encoding":{"x":{"field":"k","type":"quantitative"},"y":{"field":"kappa","type":"quantitative"}},"data":{"values":"k,metric,kappa,mcc,accuracy\n13,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n7,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n9,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n4,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n10,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n5,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n15,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n3,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n6,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n11,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n12,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n14,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n2,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n1,euclidean,0.9665924276169264,0.9673116176179397,0.9777777777777777\n8,euclidean,0.9333333333333332,0.9361080170496191,0.9555555555555556\n","format":{"type":"csv"}}}],"height":300,"data":{"url":"assignments.hw2.q1_files\/0.csv","format":{"type":"csv"}}});</script></div>
+<p>This code creates a plot of the elbow method results for the Euclidean distance metric, showing how kappa changes with different K values.</p>
+<blockquote class="blockquote">
+<p><span style="color: black; font-size: 1.5em;"><strong>Looking at our elbow plot, we can see that the elbow dips down at <span class="math inline">\(K=8\)</span>. Therefore, we want a K before 8. To me, 1 is too small and even numbers won’t necessarily have a majority in a vote. I’d say good choices are 3, 5, or 7. I’ll choose 5 because it’s the middle value.</strong></span></p>
+</blockquote>
+<p><strong><em>3) Explore different distance metrics and repeat part 2 with another distance metric. In the report, justify the value of K and the distance metric.</em></strong></p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb19"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [data (tc/select-rows results-dataset (<span class="kw">comp</span> #(<span class="kw">=</span> <span class="va">%</span> <span class="st">"manhattan"</span>) <span class="at">:metric</span>))]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> data</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>      (haclo/layer-line {:=x <span class="at">:k</span> :=y <span class="at">:mcc</span>})</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>      (haclo/layer-point {:=x         <span class="at">:k</span> :=y <span class="at">:mcc</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                          :=mark-size <span class="dv">50</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"x":{"field":"x","type":"nominal"},"y":{"field":"y","type":"nominal"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"width":400,"background":"floralwhite","layer":[{"mark":{"type":"line","tooltip":true},"encoding":{"x":{"field":"k","type":"quantitative"},"y":{"field":"mcc","type":"quantitative"}},"data":{"values":"k,metric,kappa,mcc,accuracy\n8,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n3,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n5,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n2,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n7,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n10,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n4,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n9,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n1,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n12,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n6,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n11,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n14,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n15,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n13,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n","format":{"type":"csv"}}},{"mark":{"type":"circle","size":50,"tooltip":true},"encoding":{"x":{"field":"k","type":"quantitative"},"y":{"field":"mcc","type":"quantitative"}},"data":{"values":"k,metric,kappa,mcc,accuracy\n8,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n3,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n5,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n2,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n7,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n10,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n4,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n9,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n1,manhattan,0.9665924276169264,0.9673116176179397,0.9777777777777777\n12,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n6,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n11,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n14,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n15,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n13,manhattan,0.9333333333333332,0.9361080170496191,0.9555555555555556\n","format":{"type":"csv"}}}],"height":300,"data":{"url":"assignments.hw2.q1_files\/1.csv","format":{"type":"csv"}}});</script></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb20"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [data (tc/select-rows results-dataset (<span class="kw">comp</span> #(<span class="kw">=</span> <span class="va">%</span> <span class="st">"cosine"</span>) <span class="at">:metric</span>))]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> data</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>      (haclo/layer-line {:=x <span class="at">:k</span> :=y <span class="at">:mcc</span>})</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>      (haclo/layer-point {:=x         <span class="at">:k</span> :=y <span class="at">:mcc</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                          :=mark-size <span class="dv">50</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><script>vegaEmbed(document.currentScript.parentElement, {"encoding":{"x":{"field":"x","type":"nominal"},"y":{"field":"y","type":"nominal"}},"usermeta":{"embedOptions":{"renderer":"svg"}},"width":400,"background":"floralwhite","layer":[{"mark":{"type":"line","tooltip":true},"encoding":{"x":{"field":"k","type":"quantitative"},"y":{"field":"mcc","type":"quantitative"}},"data":{"values":"k,metric,kappa,mcc,accuracy\n10,cosine,1.0,1.0,1.0\n12,cosine,1.0,1.0,1.0\n14,cosine,1.0,1.0,1.0\n6,cosine,1.0,1.0,1.0\n15,cosine,1.0,1.0,1.0\n5,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n4,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n9,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n8,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n1,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n3,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n11,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n2,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n7,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n13,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n","format":{"type":"csv"}}},{"mark":{"type":"circle","size":50,"tooltip":true},"encoding":{"x":{"field":"k","type":"quantitative"},"y":{"field":"mcc","type":"quantitative"}},"data":{"values":"k,metric,kappa,mcc,accuracy\n10,cosine,1.0,1.0,1.0\n12,cosine,1.0,1.0,1.0\n14,cosine,1.0,1.0,1.0\n6,cosine,1.0,1.0,1.0\n15,cosine,1.0,1.0,1.0\n5,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n4,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n9,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n8,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n1,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n3,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n11,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n2,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n7,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n13,cosine,0.9665924276169264,0.9673116176179397,0.9777777777777777\n","format":{"type":"csv"}}}],"height":300,"data":{"url":"assignments.hw2.q1_files\/2.csv","format":{"type":"csv"}}});</script></div>
+<p><strong>Justification for K value and distance metric:</strong></p>
+<p><em>1. Euclidean distance (default):</em></p>
+<ul>
+<li>Optimal K: <span class="math inline">\([3, 5, 7]\)</span></li>
+<li>This metric is suitable for continuous features and assumes all features contribute equally.</li>
+<li>It works well when the relationship between features is linear.</li>
+</ul>
+<p><em>2. Manhattan distance:</em></p>
+<ul>
+<li>Optimal K: <span class="math inline">\([3, 5]\)</span></li>
+<li>This metric is less sensitive to outliers compared to Euclidean distance.</li>
+<li>It’s particularly useful when features are on different scales or when dealing with high-dimensional data.</li>
+</ul>
+<p><em>3. Cosine distance:</em></p>
+<ul>
+<li>Optimal K: <span class="math inline">\([6, 10, 12, 14, 15]\)</span></li>
+<li>This metric is useful for high-dimensional data where feature scaling is important.</li>
+<li>It’s particularly useful when the angle between data points is more important than their magnitude.</li>
+</ul>
+<p>The choice between these metrics depends on the specific characteristics of the Iris dataset:</p>
+<ul>
+<li>If the features are on similar scales and have a roughly linear relationship, Euclidean distance might be preferred.</li>
+<li>If there are potential outliers or the features are on different scales, Manhattan distance could be more appropriate.</li>
+<li>If the data is high-dimensional and feature scaling is important, cosine distance might be the best choice.</li>
+</ul>
+<blockquote class="blockquote">
+<p><span style="color: black; font-size: 1.5em;"><strong>The optimal K value balances between overfitting (low K) and underfitting (high K). The choice of distance metric depends on the specific characteristics of the dataset. Euclidean distance is a fine choice for this dataset for reasons explained above as well as being the easiest to understand. As such, I’d probably choose <span class="math inline">\(K=5\)</span> using the Euclidean distance metric.</strong></span></p>
+</blockquote>
+<p><strong><em>4) Train the KNN model with the optimal K value and chosen distance metric on the combined train and validation sets.</em></strong></p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb21"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> train-val-data-bootstrapped</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> train-data</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      (tc/concat val-data)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>      (tc/split-&gt;seq <span class="at">:bootstrap</span> {<span class="at">:seed</span> <span class="dv">123</span> <span class="at">:repeats</span> <span class="dv">25</span>})))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code combines the training and validation data, then creates 25 bootstrap samples for robust model evaluation.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb22"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">def</span><span class="fu"> final-model</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [pipelines (<span class="kw">map</span> create-pipeline [{<span class="at">:n-neighbors</span> <span class="dv">5</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">:weights</span>     <span class="st">"distance"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">:metric</span>      <span class="st">"euclidean"</span>}])</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        evaluations (evaluate-model pipelines train-val-data-bootstrapped)]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    (process-results evaluations)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we define the final model using the chosen hyperparameters (5 neighbors, Euclidean distance) and evaluate it on the bootstrapped data.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb23"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">-&gt;</span> final-model <span class="kw">first</span> <span class="at">:lookup-table</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="printedClojure">
+<div class="sourceCode" id="cb24"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>{<span class="st">"Versicolor"</span> <span class="dv">0</span>, <span class="st">"Setosa"</span> <span class="dv">1</span>, <span class="st">"Virginica"</span> <span class="dv">2</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This line retrieves the lookup table from the final model, which maps categorical labels to numerical values.</p>
+<p><strong><em>5) Evaluate the model on the test set and report the accuracy.</em></strong></p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb25"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> actual</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  [model]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">-&gt;</span> test-data <span class="at">:variety</span> <span class="kw">vec</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb26"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> preds</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  [model]</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [lookup-table (<span class="kw">-&gt;</span> model <span class="kw">first</span> <span class="at">:lookup-table</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        reverse-lookup (<span class="kw">zipmap</span> (<span class="kw">vals</span> lookup-table) (<span class="kw">keys</span> lookup-table))]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">-&gt;</span> test-data</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        (morph/transform-pipe</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>         (<span class="kw">-&gt;</span> model <span class="kw">first</span> <span class="at">:pipe-fn</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>         (<span class="kw">-&gt;</span> model <span class="kw">first</span> <span class="at">:fit-ctx</span>))</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">:metamorph/data</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">:variety</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        (<span class="kw">-&gt;&gt;</span> (<span class="kw">map</span> #(<span class="kw">get</span> reverse-lookup (<span class="kw">long</span> <span class="va">%</span>)))</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>             <span class="kw">vec</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These functions extract the actual labels from the test data and generate predictions using the trained model, respectively.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb27"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(<span class="bu">defn</span><span class="fu"> evaluate-predictions</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Evaluates predictions against actual labels, returns confusion map and metrics."</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  [preds actual]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  (<span class="kw">let</span> [conf-map (mlc/confusion-map-&gt;ds (mlc/confusion-map preds actual <span class="at">:none</span>))</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        accuracy (loss/classification-accuracy preds actual)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>        kappa (stats/cohens-kappa preds actual)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        mcc (stats/mcc preds actual)]</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    {<span class="at">:confusion-map</span> conf-map</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">:accuracy</span>      (<span class="kw">format</span> <span class="st">"%.4f"</span> accuracy)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">:cohens-kappa</span>  (<span class="kw">format</span> <span class="st">"%.4f"</span> kappa)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">:mcc</span>           (<span class="kw">format</span> <span class="st">"%.4f"</span> mcc)}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>evaluate-predictions</code> calculates various performance metrics including accuracy, Cohen’s kappa, and Matthews correlation coefficient, along with a confusion matrix. At last, we generate predictions on the test set, compare them with the actual labels, and compute the evaluation metrics to assess the model’s performance.</p>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb28"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(<span class="kw">let</span> [preds (preds final-model)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>      actual (actual final-model)]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  (evaluate-predictions preds actual))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div><p>{</p><div class="clay-map" style="margin-left:10%;width:110%;">
+<table data-quarto-postprocess="true" class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-valign="top"><div>
+<pre class="sourceCode language-clojure printed-clojure code-with-copy"><code>:confusion-map</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+</div></td>
+<td><div style="margin-left:10px;">
+<div class="clay-dataset">
+<p>_unnamed [3 4]:</p>
+<table class="table" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">:column-name</th>
+<th data-quarto-table-cell-role="th">Setosa</th>
+<th data-quarto-table-cell-role="th">Versicolor</th>
+<th data-quarto-table-cell-role="th">Virginica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Setosa</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Versicolor</td>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Virginica</td>
+<td>0</td>
+<td>1</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+<div><pre><code class="sourceCode language-clojure printed-clojure">:accuracy "0.9333"</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">:cohens-kappa "0.9000"</code></pre></div><div><pre><code class="sourceCode language-clojure printed-clojure">:mcc "0.9061"</code></pre></div></div><p>}</p></div>
+<div class="sourceClojure">
+<div class="sourceCode" id="cb30"><pre class="sourceCode clojure code-with-copy"><code class="sourceCode clojure"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(answer (<span class="kw">str</span> <span class="st">"Accuracy on the Iris test set: "</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>             (<span class="kw">get-in</span> (<span class="kw">let</span> [preds (preds final-model)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                           actual (actual final-model)]</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                       (evaluate-predictions preds actual))</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                     [<span class="at">:accuracy</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p><span style="color: black; font-size: 1.5em;"><strong>Accuracy on the Iris test set: 0.9333</strong></span></p>
+</blockquote>
+<p><strong><em>6) Provide a brief analysis of the results in your report.</em></strong></p>
+</section>
+<section id="analysis-of-results" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-of-results">Analysis of Results:</h3>
+<section id="data-split" class="level4">
+<h4 class="anchored" data-anchor-id="data-split">1. Data Split:</h4>
+<p>We used a 70/20/10 split for train/validation/test, which is a common practice. This split provides enough data for training while reserving sufficient data for validation and testing. However, the Iris dataset is small, where the 10% holdout is just 15 samples.</p>
+</section>
+<section id="elbow-method" class="level4">
+<h4 class="anchored" data-anchor-id="elbow-method">2. Elbow Method:</h4>
+<p>This approach effectively determined the optimal K value, balancing between model complexity and performance, between underfitting and overfitting.</p>
+</section>
+<section id="distance-metrics" class="level4">
+<h4 class="anchored" data-anchor-id="distance-metrics">3. Distance Metrics:</h4>
+<p>Comparison of Euclidean and Manhattan distances revealed metric-dependent optimal K values, underscoring the importance of metric selection in KNN.</p>
+</section>
+<section id="final-model" class="level4">
+<h4 class="anchored" data-anchor-id="final-model">4. Final Model:</h4>
+<p>We selected Euclidean distance with K = 5, based on the elbow method results. This choice aims to balance model simplicity with performance.</p>
+</section>
+<section id="model-performance" class="level4">
+<h4 class="anchored" data-anchor-id="model-performance">5. Model Performance:</h4>
+<p>The final accuracy of <span class="math inline">\(0.9333\)</span> on the test set demonstrates strong generalization to unseen data, validating our K and distance metric choices.</p>
+</section>
+<section id="limitations-and-future-work" class="level4">
+<h4 class="anchored" data-anchor-id="limitations-and-future-work">6. Limitations and Future Work:</h4>
+<ul>
+<li>Explore additional distance metrics and feature scaling techniques for potential performance improvements.</li>
+<li>Implement k-fold cross-validation for more robust performance estimation.</li>
+<li>Conduct feature importance analysis to identify key iris characteristics for classification.</li>
+<li>Consider testing the model on a larger, more diverse dataset to assess its broader applicability.</li>
+</ul>
+<div style="background-color:grey;height:2px;width:100%;"></div>
+<div><pre><small><small>source: <a href="https://github.com/adabwana/f24-cs7300-hw2/blob/master/src/assignments/hw2/q1.clj">src/assignments/hw2/q1.clj</a></small></small></pre></div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Jaryt Salvo</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./assignments.hw2.q2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">Question 2</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
