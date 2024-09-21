@@ -1,0 +1,7 @@
+format:
+  html: {toc: true, toc-depth: 3, theme: cosmo, number-sections: false}
+  revealjs: {theme: cosmo, navigation-mode: vertical, transition: slide, background-transition: fade, incremental: true}
+project: {type: book}
+book:
+  chapters: [index.qmd, assignments.hw2.q1.qmd, assignments.hw2.q2.qmd, assignments.hw2.q3.qmd]
+  title: Homework 1
