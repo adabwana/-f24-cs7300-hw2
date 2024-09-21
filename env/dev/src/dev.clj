@@ -4,7 +4,7 @@
 (defn build []
   (clay/make!
    {:format              [:quarto :html]
-    :book                {:title "Homework 1"}
+    :book                {:title "Homework 2"}
     :subdirs-to-sync     ["notebooks" "data"]
     :source-path         ["src/index.clj"
                           ;; "src/assignments/hw2/utils.clj"
