@@ -1,21 +1,20 @@
 (ns assignments.hw2.q2
   (:require
-   [assignments.hw2.utils :refer :all]
-   ;; [scicloj.sklearn-clj]
-   [scicloj.hanamicloth.v1.api :as haclo]
-   [libpython-clj2.python :refer [py. py.-]]
-   [libpython-clj2.require :refer [require-python]]
-   [my-py-clj.config :refer :all]
-   [tablecloth.api :as tc]
-   [scicloj.kindly.v4.kind :as kind]))
+    [assignments.hw2.utils :refer :all]
+    ;; [scicloj.sklearn-clj]
+    [libpython-clj2.python :refer [py. py.-]]
+    [libpython-clj2.require :refer [require-python]]
+    [my-py-clj.config :refer :all]
+    [scicloj.hanamicloth.v1.api :as haclo]
+    [tablecloth.api :as tc]))
 
 (question "Question 2")
 (sub-question "Q2: Cross Validation for Ridge Regression (40 points)")
 
-(md 
- "For this question, you will need to perform Ridge ($L^2$) regression with K-fold cross validation via Scki-Learn. The data set is the famous Boston Housing data, which is a benchmark data for regression. The data contains 14 attributes and the `medv`, median value of owner-occupied homes in $1000s, will be your target to predict. The data set can be downloaded from canvas. You can also find some helpful information at [Kaggle](https://www.kaggle.com/code/henriqueyamahata/boston-housing-with-linear-regression/notebook). 
-  
-  In lecture, we learned training, test, and validation. However, in the real-world, we cannot always afford to implement it due to insufficient data. An alternative solution is K-fold cross validation which uses a part of the available data to fit the model, and a different part to test it. K-fold CV procedure splits the data into K equal-sized parts.")
+(md
+  "For this question, you will need to perform Ridge ($L^2$) regression with K-fold cross validation via Scki-Learn. The data set is the famous Boston Housing data, which is a benchmark data for regression. The data contains 14 attributes and the `medv`, median value of owner-occupied homes in $1000s, will be your target to predict. The data set can be downloaded from canvas. You can also find some helpful information at [Kaggle](https://www.kaggle.com/code/henriqueyamahata/boston-housing-with-linear-regression/notebook).
+
+   In lecture, we learned training, test, and validation. However, in the real-world, we cannot always afford to implement it due to insufficient data. An alternative solution is K-fold cross validation which uses a part of the available data to fit the model, and a different part to test it. K-fold CV procedure splits the data into K equal-sized parts.")
 
 
 (sub-sub "1) Load the train data and test data")
@@ -58,22 +57,22 @@
 (answer (str "Best parameters:" (py.- cv-ridge best_params_)))
 (answer (str "Best CV score:" (py.- cv-ridge best_score_)))
 
-(md 
- "### K-fold Cross Validation Procedure:
+(md
+  "### K-fold Cross Validation Procedure:
 
-1) The training data is divided into 5 equal parts (folds).
-2) For each fold:
+ 1) The training data is divided into 5 equal parts (folds).
+ 2) For each fold:
 
-   a) That fold is treated as a validation set.
-   b) The model is trained on the remaining 4 folds.
-   c) The model's performance is evaluated on the validation fold.
+    a) That fold is treated as a validation set.
+    b) The model is trained on the remaining 4 folds.
+    c) The model's performance is evaluated on the validation fold.
 
-3) This process is repeated 5 times, with each fold serving as the validation set once.
-4) The average performance across all 5 validations is used as the cross-validation score.
-5) This entire procedure is repeated for each hyperparameter combination (different alpha values).
-6) The hyperparameters that yield the best average performance are selected.
+ 3) This process is repeated 5 times, with each fold serving as the validation set once.
+ 4) The average performance across all 5 validations is used as the cross-validation score.
+ 5) This entire procedure is repeated for each hyperparameter combination (different alpha values).
+ 6) The hyperparameters that yield the best average performance are selected.
 
- This method provides a robust estimate of the model's performance and helps in selecting the best hyperparameters, reducing the risk of overfitting.")
+  This method provides a robust estimate of the model's performance and helps in selecting the best hyperparameters, reducing the risk of overfitting.")
 
 (md "Below, we print the best model's intercept and coefficients, and construct a human-readable equation for the Ridge regression model.")
 
@@ -82,17 +81,17 @@
       coefficients (py.- best-model coef_)
       feature-names (py.- X-train columns)]
   (answer
-   (str "Ridge Regression Equation:\n"
-        "$medv = "
-        (format "%.4f" intercept)
-        (apply str
-               (map (fn [name coef]
-                      (format " %s %.4f * %s"
-                              (if (pos? coef) "+" "-")
-                              (Math/abs coef)
-                              name))
-                    feature-names
-                    coefficients)) "$")))
+    (str "Ridge Regression Equation:\n"
+         "$medv = "
+         (format "%.4f" intercept)
+         (apply str
+                (map (fn [name coef]
+                       (format " %s %.4f * %s"
+                               (if (pos? coef) "+" "-")
+                               (Math/abs coef)
+                               name))
+                     feature-names
+                     coefficients)) "$")))
 
 (sub-sub "3) Justify the choice of K")
 
@@ -133,21 +132,21 @@
 
 (let [feature-names (vec feature-names)
       feature-importance (vec feature-importance)
-      data (tc/dataset {:vars feature-names
+      data (tc/dataset {:vars       feature-names
                         :importance feature-importance})
       sorted (tc/order-by data :importance :desc)]
   (-> sorted
       (haclo/layer-bar
-       {:=y :vars :=x :importance       ;order-by??
-        :=title "Feature Importances"})))
+        {:=y     :vars :=x :importance                      ;order-by??
+         :=title "Feature Importances"})))
 
 (md "The barplot shows the regressor coefficients, which are proportional to the feature importances. The plot is generated using the Hanami plotting library.")
 
 (answer
- (str "Feature importances:\n"
-      (clojure.string/join "\n"
-                           (for [[feature importance] (map vector feature-names feature-importance)]
-                             (format "%-20s : %.4f ;  " feature importance)))))
+  (str "Feature importances:\n"
+       (clojure.string/join "\n"
+                            (for [[feature importance] (map vector feature-names feature-importance)]
+                              (format "%-20s : %.4f ;  " feature importance)))))
 
 (md "This generates a formatted string output of all feature importances, aligning feature names and their corresponding importance values.")
 
@@ -163,19 +162,19 @@
 
 
 (answer
- (str "\nTop 5 most important features:\n"
-      (clojure.string/join "\n"
-                           (for [[feature importance] (take 5 sorted-features)]
-                             (format "%-20s : %.4f ;  " feature (float importance))))))
+  (str "\nTop 5 most important features:\n"
+       (clojure.string/join "\n"
+                            (for [[feature importance] (take 5 sorted-features)]
+                              (format "%-20s : %.4f ;  " feature (float importance))))))
 
 (md
- "### Explanation of feature importances:
- 
-1. The most important features are those with the largest absolute coefficient values.
-2. Positive coefficients indicate that an increase in the feature leads to an increase in the predicted house price, while negative coefficients indicate the opposite.
-3. The magnitude of the coefficient represents the feature's relative importance in predicting the house price.
-4. Features with near-zero coefficients have little impact on the prediction.
+  "### Explanation of feature importances:
 
-This analysis helps us understand which factors most strongly influence house prices in the Boston housing dataset.")
+ 1. The most important features are those with the largest absolute coefficient values.
+ 2. Positive coefficients indicate that an increase in the feature leads to an increase in the predicted house price, while negative coefficients indicate the opposite.
+ 3. The magnitude of the coefficient represents the feature's relative importance in predicting the house price.
+ 4. Features with near-zero coefficients have little impact on the prediction.
+
+ This analysis helps us understand which factors most strongly influence house prices in the Boston housing dataset.")
 
 

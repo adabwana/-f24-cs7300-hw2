@@ -1,80 +1,77 @@
 (ns assignments.hw2.q3
   (:require
-   [assignments.hw2.utils :refer :all]
-   [tablecloth.api :as tc]
-   [fastmath.core :as m]
-   [fastmath.stats :as s]))
+    [assignments.hw2.utils :refer :all]))
 
 (question "Question 3")
 (sub-question "Q3: Writing Questions (20 points)")
 
 (sub-sub "1) What is the curse of dimensionality and list three ways to avoid it. (6 points)")
 
-(md 
- "### Curse of Dimensionality
+(md
+  "### Curse of Dimensionality
 
-The curse of dimensionality refers to various phenomena that arise when analyzing and organizing data in high-dimensional spaces that do not occur in low-dimensional settings. As the number of features or dimensions grows, the amount of data needed to generalize accurately grows exponentially. This curse makes it challenging for machine learning algorithms to be effective in high dimensions.
+ The curse of dimensionality refers to various phenomena that arise when analyzing and organizing data in high-dimensional spaces that do not occur in low-dimensional settings. As the number of features or dimensions grows, the amount of data needed to generalize accurately grows exponentially. This curse makes it challenging for machine learning algorithms to be effective in high dimensions.
 
-#### Key aspects of the curse of dimensionality:
+ #### Key aspects of the curse of dimensionality:
 
-##### 1. Sparsity:
-   Data becomes sparse in high dimensions, making it difficult to find patterns.
+ ##### 1. Sparsity:
+    Data becomes sparse in high dimensions, making it difficult to find patterns.
 
-##### 2. Distance Concentration: 
-   Distances between points become less meaningful as dimensions increase.
+ ##### 2. Distance Concentration:
+    Distances between points become less meaningful as dimensions increase.
 
-##### 3. Model Complexity: 
-   The number of parameters in models often increases exponentially with dimensions.
+ ##### 3. Model Complexity:
+    The number of parameters in models often increases exponentially with dimensions.
 
-#### Three ways to mitigate the curse of dimensionality:
+ #### Three ways to mitigate the curse of dimensionality:
 
-##### 1. Dimensionality Reduction: 
-   - Use techniques like PCA, t-SNE, or autoencoders to reduce the number of features while preserving important information.
-   - This helps in visualizing high-dimensional data and can improve model performance.
+ ##### 1. Dimensionality Reduction:
+    - Use techniques like PCA, t-SNE, or autoencoders to reduce the number of features while preserving important information.
+    - This helps in visualizing high-dimensional data and can improve model performance.
 
-##### 2. Feature Selection:
-   - Choose only the most relevant features for your model using methods like Lasso, Ridge regression, or tree-based feature importance.
-   - This reduces noise and helps focus on the most informative aspects of the data.
+ ##### 2. Feature Selection:
+    - Choose only the most relevant features for your model using methods like Lasso, Ridge regression, or tree-based feature importance.
+    - This reduces noise and helps focus on the most informative aspects of the data.
 
-##### 3. Regularization:
-   - Apply techniques like $L^1$ (Lasso) or $L^2$ (Ridge) regularization to prevent overfitting in high-dimensional spaces.
-   - This constrains model complexity and can lead to better generalization.
+ ##### 3. Regularization:
+    - Apply techniques like $L^1$ (Lasso) or $L^2$ (Ridge) regularization to prevent overfitting in high-dimensional spaces.
+    - This constrains model complexity and can lead to better generalization.
 
-#### Additional Strategies 
-  We could also collect more data, use domain knowledge to guide feature engineering, and employ algorithms that are less sensitive to high dimensionality, such as decision trees or random forests.")
+ #### Additional Strategies
+   We could also collect more data, use domain knowledge to guide feature engineering, and employ algorithms that are less sensitive to high dimensionality, such as decision trees or random forests.")
 
 (sub-sub "2) Explain the differences between Ridge penalty and Lasso penalty. (6 points)")
 
-(md 
- "### Ridge vs. Lasso
+(md
+  "### Ridge vs. Lasso
 
-Ridge ($L^2$) and Lasso ($L^1$) penalties are both regularization techniques used in linear models to prevent overfitting, but they differ in their approach and effects:
+ Ridge ($L^2$) and Lasso ($L^1$) penalties are both regularization techniques used in linear models to prevent overfitting, but they differ in their approach and effects:
 
-#### 1. Mathematical Formulation:
-  - ***Ridge:*** Adds the sum of squared coefficients (L2 norm) to the loss function. Penalty term: $$λ_2 * Σ(β_i^2)$$
-  - ***Lasso:*** Adds the sum of absolute values of coefficients (L1 norm) to the loss function. Penalty term: $$λ_1 * Σ|β_i|$$
+ #### 1. Mathematical Formulation:
+   - ***Ridge:*** Adds the sum of squared coefficients (L2 norm) to the loss function. Penalty term: $$λ_2 * Σ(β_i^2)$$
+   - ***Lasso:*** Adds the sum of absolute values of coefficients (L1 norm) to the loss function. Penalty term: $$λ_1 * Σ|β_i|$$
 
-#### 2. Effect on Coefficients:
-  - ***Ridge:*** Shrinks all coefficients towards zero, but rarely makes them exactly zero.
-  - ***Lasso:*** Can shrink coefficients to exactly zero, effectively performing feature selection.
+ #### 2. Effect on Coefficients:
+   - ***Ridge:*** Shrinks all coefficients towards zero, but rarely makes them exactly zero.
+   - ***Lasso:*** Can shrink coefficients to exactly zero, effectively performing feature selection.
 
-#### 3. Geometry:
-  - ***Ridge:*** Creates a circular (in 2D) or spherical (in higher dimensions) constraint region.
-  - ***Lasso:*** Creates a diamond-shaped (in 2D) or pyramidal (in higher dimensions) constraint region.
+ #### 3. Geometry:
+   - ***Ridge:*** Creates a circular (in 2D) or spherical (in higher dimensions) constraint region.
+   - ***Lasso:*** Creates a diamond-shaped (in 2D) or pyramidal (in higher dimensions) constraint region.
 
-#### 4. Solution Characteristics:
-  - ***Ridge:*** Always has a unique solution due to the strictly convex nature of its objective function.
-  - ***Lasso:*** May have multiple solutions when features are highly correlated.
+ #### 4. Solution Characteristics:
+   - ***Ridge:*** Always has a unique solution due to the strictly convex nature of its objective function.
+   - ***Lasso:*** May have multiple solutions when features are highly correlated.
 
-#### 5. Feature Selection:
-  - ***Ridge:*** Keeps all features but reduces their impact.
-  - ***Lasso:*** Can completely eliminate less important features, leading to sparse models.
+ #### 5. Feature Selection:
+   - ***Ridge:*** Keeps all features but reduces their impact.
+   - ***Lasso:*** Can completely eliminate less important features, leading to sparse models.
 
-#### 6. Handling Correlated Features:
-  - ***Ridge:*** Tends to shrink coefficients of correlated features towards each other.
-  - ***Lasso:*** Tends to pick one of the correlated features and ignore the others.
+ #### 6. Handling Correlated Features:
+   - ***Ridge:*** Tends to shrink coefficients of correlated features towards each other.
+   - ***Lasso:*** Tends to pick one of the correlated features and ignore the others.
 
-In practice, the choice between Ridge and Lasso depends on the specific problem. Ridge is often preferred when all features are potentially relevant, while Lasso is useful when feature selection is desired or when dealing with high-dimensional data with many irrelevant features)")
+ In practice, the choice between Ridge and Lasso depends on the specific problem. Ridge is often preferred when all features are potentially relevant, while Lasso is useful when feature selection is desired or when dealing with high-dimensional data with many irrelevant features)")
 
 (sub-sub "3) Demonstrate your insights for both direct and iterative methods for optimization. (8 points)")
 

@@ -1,34 +1,34 @@
 (ns assignments.hw2.q1
   (:require
-   [my-py-clj.config :refer :all]
-   [assignments.hw2.utils :refer :all]
-   [fastmath.stats :as stats]
-  ;;  [libpython-clj2.python :refer [py.-]]
-  ;;  [scicloj.sklearn-clj.metamorph :as sklearn-mm]
-   [scicloj.hanamicloth.v1.api :as haclo]
-   [scicloj.metamorph.core :as morph]
-   [scicloj.metamorph.ml :as mm]
-   [scicloj.metamorph.ml.classification :as mlc]
-   [scicloj.metamorph.ml.gridsearch :as grid]
-   [scicloj.metamorph.ml.loss :as loss]
-   [scicloj.sklearn-clj :as sklearn-clj]
-   [scicloj.sklearn-clj.ml]                                ;; registers all models
-   [tablecloth.api :as tc]
-   [tech.v3.dataset.metamorph :as dsm]
-   [tech.v3.dataset.modelling :as ds-mod]))
+    [my-py-clj.config :refer :all]
+    [assignments.hw2.utils :refer :all]
+    [fastmath.stats :as stats]
+    ;;  [libpython-clj2.python :refer [py.-]]
+    ;;  [scicloj.sklearn-clj.metamorph :as sklearn-mm]
+    [scicloj.hanamicloth.v1.api :as haclo]
+    [scicloj.metamorph.core :as morph]
+    [scicloj.metamorph.ml :as mm]
+    [scicloj.metamorph.ml.classification :as mlc]
+    [scicloj.metamorph.ml.gridsearch :as grid]
+    [scicloj.metamorph.ml.loss :as loss]
+    [scicloj.sklearn-clj :as sklearn-clj]
+    [scicloj.sklearn-clj.ml]                                ;; registers all models
+    [tablecloth.api :as tc]
+    [tech.v3.dataset.metamorph :as dsm]
+    [tech.v3.dataset.modelling :as ds-mod]))
 
 
 (question "Question 1")
 
 (sub-question "Q1: Classification with Nearest Neighbor (30 Points)")
-(md 
- "For this question, you will need to perform KNN on the famous Iris data set. You are required to use Scki-learn to completion this question. The data is stored in a csv file and it can be downloaded from Canvas. For the description of the data set, you can visit: [Wikipedia iris dataset](https://en.wikipedia.org/wiki/Iris_flower_data_set).")
+(md
+  "For this question, you will need to perform KNN on the famous Iris data set. You are required to use Scki-learn to completion this question. The data is stored in a csv file and it can be downloaded from Canvas. For the description of the data set, you can visit: [Wikipedia iris dataset](https://en.wikipedia.org/wiki/Iris_flower_data_set).")
 
 (sub-sub "1) Load the data and split it into train, valid, and test (70/20/10).")
 
 (defonce iris (-> "data/A1Q1_Data.csv"
                   (tc/dataset {:key-fn (fn [colname]
-                                         (-> colname    ;kabab-case keyword
+                                         (-> colname        ;kabab-case keyword
                                              (clojure.string/replace #"\.|\s" "-")
                                              clojure.string/lower-case
                                              keyword))})
@@ -52,9 +52,9 @@
   (def val-data val-data))
 
 (md
- "`tc/split->seq` is a function that splits a dataset into two or more subsets. In this case, it's dividing the dataset into a test set and a training set. The `:holdout` option specifies that we want to split the dataset into two subsets, while the `:ratio` option determines the proportion of the dataset to include in the training set. 
-  
- With this 90/10 split, we can further divide the training set into training and validation sets to tune our hyperparameters. The test set is already accessible in the data variable by calling `first`, which indicates the first element (map) of the sequence. The `:test` key in this map represents the 10% of the data set aside for testing, as specified in the `tc/split->seq` function call.")
+  "`tc/split->seq` is a function that splits a dataset into two or more subsets. In this case, it's dividing the dataset into a test set and a training set. The `:holdout` option specifies that we want to split the dataset into two subsets, while the `:ratio` option determines the proportion of the dataset to include in the training set.
+
+  With this 90/10 split, we can further divide the training set into training and validation sets to tune our hyperparameters. The test set is already accessible in the data variable by calling `first`, which indicates the first element (map) of the sequence. The `:test` key in this map represents the 10% of the data set aside for testing, as specified in the `tc/split->seq` function call.")
 
 
 (sub-sub "2) Write a function that uses the elbow method to select the value for K. You can set the range for K as (1, 15).")
@@ -68,38 +68,38 @@
 
 (defn create-pipeline [params]
   (morph/pipeline
-   (dsm/categorical->number [response])
-   (dsm/set-inference-target response)
-   {:metamorph/id :model}
-   (mm/model (merge {:model-type :sklearn.classification/k-neighbors-classifier}
-                    params))))
+    (dsm/categorical->number [response])
+    (dsm/set-inference-target response)
+    {:metamorph/id :model}
+    (mm/model (merge {:model-type :sklearn.classification/k-neighbors-classifier}
+                     params))))
 
 (md "This function creates a pipeline for the KNN model, converting categorical data to numbers, setting the inference target, and creating the model with given parameters.")
 
 (defn generate-hyperparams []
   (grid/sobol-gridsearch
-   {:n-neighbors (grid/linear 1 15 15 :int32)
-    :weights     (grid/categorical ["distance"])
-    :metric      (grid/categorical ["euclidean" "manhattan" "cosine"])}))
+    {:n-neighbors (grid/linear 1 15 15 :int32)
+     :weights     (grid/categorical ["distance"])
+     :metric      (grid/categorical ["euclidean" "manhattan" "cosine"])}))
 
 (md "This function generates hyperparameters for the KNN model using Sobol sequence for efficient space exploration, including neighbors (1-15), weights, and distance metrics.")
 
 (grid/sobol-gridsearch
- {:n-neighbors (grid/linear 1 2 2 :int32)
-  :metric      (grid/categorical ["euclidean" "manhattan"])})
+  {:n-neighbors (grid/linear 1 2 2 :int32)
+   :metric      (grid/categorical ["euclidean" "manhattan"])})
 
 
 (defn evaluate-model [pipelines data-seq]
   (mm/evaluate-pipelines
-   pipelines
-   data-seq
-   stats/cohens-kappa
-   :accuracy
-   {:other-metrices
-    [{:name :mathews-cor-coef :metric-fn stats/mcc}
-     {:name :accuracy :metric-fn loss/classification-accuracy}]
-    :return-best-pipeline-only        false
-    :return-best-crossvalidation-only true}))
+    pipelines
+    data-seq
+    stats/cohens-kappa
+    :accuracy
+    {:other-metrices
+     [{:name :mathews-cor-coef :metric-fn stats/mcc}
+      {:name :accuracy :metric-fn loss/classification-accuracy}]
+     :return-best-pipeline-only        false
+     :return-best-crossvalidation-only true}))
 
 (md "This function evaluates the model pipelines using various metrics like Cohen's kappa, Matthews correlation coefficient, and accuracy.")
 
@@ -107,14 +107,14 @@
   (->> evaluations
        flatten
        (map #(hash-map
-              :summary (mm/thaw-model (get-in % [:fit-ctx :model]))
-              :fit-ctx (:fit-ctx %)
-              :timing-fit (:timing-fit %)
-              :metric ((comp :metric :test-transform) %)
-              :other-metrices ((comp :other-metrices :test-transform) %)
-              :params ((comp :options :model :fit-ctx) %)
-              :lookup-table (get-in % [:fit-ctx :model :target-categorical-maps :variety :lookup-table])
-              :pipe-fn (:pipe-fn %)))
+               :summary (mm/thaw-model (get-in % [:fit-ctx :model]))
+               :fit-ctx (:fit-ctx %)
+               :timing-fit (:timing-fit %)
+               :metric ((comp :metric :test-transform) %)
+               :other-metrices ((comp :other-metrices :test-transform) %)
+               :params ((comp :options :model :fit-ctx) %)
+               :lookup-table (get-in % [:fit-ctx :model :target-categorical-maps :variety :lookup-table])
+               :pipe-fn (:pipe-fn %)))
        (sort-by :metric)
        reverse))
 
@@ -259,8 +259,8 @@ The choice between these metrics depends on the specific characteristics of the 
     [model]
     (-> test-data
         (morph/transform-pipe
-         (-> model first :pipe-fn)
-         (-> model first :fit-ctx))
+          (-> model first :pipe-fn)
+          (-> model first :fit-ctx))
         :metamorph/data
         :variety
         (->> (map #(long %))
@@ -270,7 +270,7 @@ The choice between these metrics depends on the specific characteristics of the 
     [model]
     (-> test-data
         (morph/fit-pipe
-         (-> model first :pipe-fn))
+          (-> model first :pipe-fn))
         :metamorph/data
         :variety
         vec))
@@ -280,7 +280,7 @@ The choice between these metrics depends on the specific characteristics of the 
     (let [lookup-table (-> model first :lookup-table)]
       (-> test-data
           (morph/fit-pipe
-           (-> model first :pipe-fn))
+            (-> model first :pipe-fn))
           :metamorph/data
           :variety
           (->> (map #(get lookup-table %))
@@ -297,8 +297,8 @@ The choice between these metrics depends on the specific characteristics of the 
         reverse-lookup (zipmap (vals lookup-table) (keys lookup-table))]
     (-> test-data
         (morph/transform-pipe
-         (-> model first :pipe-fn)
-         (-> model first :fit-ctx))
+          (-> model first :pipe-fn)
+          (-> model first :fit-ctx))
         :metamorph/data
         :variety
         (->> (map #(get reverse-lookup (long %)))
@@ -334,30 +334,30 @@ The choice between these metrics depends on the specific characteristics of the 
 
 
 ^:kindly/hide-code
-(md 
- "### Analysis of Results:
+(md
+  "### Analysis of Results:
 
-#### 1. Data Split: 
-  We used a 70/20/10 split for train/validation/test, which is a common practice. This split provides enough data for training while reserving sufficient data for validation and testing. However, the Iris dataset is small, where the 10% holdout is just 15 samples.
+ #### 1. Data Split:
+   We used a 70/20/10 split for train/validation/test, which is a common practice. This split provides enough data for training while reserving sufficient data for validation and testing. However, the Iris dataset is small, where the 10% holdout is just 15 samples.
 
-#### 2. Elbow Method: 
-  This approach effectively determined the optimal K value, balancing between model complexity and performance, between underfitting and overfitting.
+ #### 2. Elbow Method:
+   This approach effectively determined the optimal K value, balancing between model complexity and performance, between underfitting and overfitting.
 
-#### 3. Distance Metrics:
-  Comparison of Euclidean and Manhattan distances revealed metric-dependent optimal K values, underscoring the importance of metric selection in KNN.
+ #### 3. Distance Metrics:
+   Comparison of Euclidean and Manhattan distances revealed metric-dependent optimal K values, underscoring the importance of metric selection in KNN.
 
-#### 4. Final Model:
-  We selected Euclidean distance with K = 5, based on the elbow method results. This choice aims to balance model simplicity with performance.
+ #### 4. Final Model:
+   We selected Euclidean distance with K = 5, based on the elbow method results. This choice aims to balance model simplicity with performance.
 
-#### 5. Model Performance:
-  The final accuracy of $0.9333$ on the test set demonstrates strong generalization to unseen data, validating our K and distance metric choices.
+ #### 5. Model Performance:
+   The final accuracy of $0.9333$ on the test set demonstrates strong generalization to unseen data, validating our K and distance metric choices.
 
-#### 6. Limitations and Future Work:
-  
-  - Explore additional distance metrics and feature scaling techniques for potential performance improvements.
-  - Implement k-fold cross-validation for more robust performance estimation.
-  - Conduct feature importance analysis to identify key iris characteristics for classification.
-  - Consider testing the model on a larger, more diverse dataset to assess its broader applicability.")
+ #### 6. Limitations and Future Work:
+
+   - Explore additional distance metrics and feature scaling techniques for potential performance improvements.
+   - Implement k-fold cross-validation for more robust performance estimation.
+   - Conduct feature importance analysis to identify key iris characteristics for classification.
+   - Consider testing the model on a larger, more diverse dataset to assess its broader applicability.")
 
 
 ^:kindly/hide-code
@@ -370,10 +370,10 @@ The choice between these metrics depends on the specific characteristics of the 
 
   (def test-ds
     (->
-     (tc/dataset {:x1 [3]
-                  :x2 [5]
-                  :y  [0]})
-     (ds-mod/set-inference-target :y)))
+      (tc/dataset {:x1 [3]
+                   :x2 [5]
+                   :y  [0]})
+      (ds-mod/set-inference-target :y)))
 
   (def lin-reg
     (sklearn-clj/fit train-ds :sklearn.neighbors :k-neighbors-classifier))
